@@ -10,8 +10,8 @@ class Chessboard
     @backtrack_states = Containers::Stack.new
   end
 
-  def print
-    puts @state
+  def current_state_string
+    return @state.to_s
   end
 
   def valid_column(column)
