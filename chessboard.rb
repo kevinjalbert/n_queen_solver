@@ -11,7 +11,19 @@ class Chessboard
   end
 
   def current_state_string
-    return @state.to_s
+    string = ""
+    (@size * @size).times{ |i|
+      if i % @size == 0
+        string << "\n\t"
+      end
+      if @state[i]
+        string << "1"
+      else
+        string << "0"
+      end
+    }
+    string << "\n"
+    return string
   end
 
   def valid_column(column)
@@ -134,6 +146,17 @@ class Chessboard
   end
 
   def queens_size
+    # Special case to handle a bitset of 64 (NOTE No fix in Bitset yet)
+    if @size == 8
+      bits = 0
+      (@size * @size).times { |i|
+        if @state[i]
+          bits += 1
+        end
+      }
+      return bits
+    end
+
     return @state.cardinality
   end
 
@@ -143,15 +166,15 @@ class Chessboard
   end
 
   def add_backtrack_state
-    #puts "  add backtrack state " + @state.to_s
+    # puts "  add backtrack state " + @state.to_s
     state = Bitset.from_s(@state.to_s)
     @backtrack_states.push(state)
   end
 
   def backtrack
-    #puts "  backtrack from " + @state.to_s
+    # puts "  backtrack from " + @state.to_s
     @state = @backtrack_states.pop
-    #puts "  to " + @state.to_s
+    # puts "  to " + @state.to_s
   end
 
   def get_possible_states

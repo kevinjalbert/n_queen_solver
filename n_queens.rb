@@ -55,11 +55,12 @@ class NQueenSolver
   def create_frontier
     # Create frontier (stack/queue using algorithms gem)
     @frontier = nil
-    @backtrack = Containers::Stack.new
     if $opts[:dfs]
       @frontier = Containers::Stack.new
+      @backtrack = Containers::Stack.new
     else
       @frontier = Containers::Queue.new
+      @backtrack = Containers::Queue.new
     end
   end
 
@@ -79,10 +80,11 @@ class NQueenSolver
 
     # Loop till finished (using a backtracking algorithm)
     while true
+
       if @board.all_valid && @board.queens_size == $opts[:queens]
         if !goal_states.include?(@board.current_state_string)
-          print "GOAL #{goal_states.size} FOUND (#{@board.current_state_string}) @ step #{state_steps} in #{Time.new - initial_time} seconds\n"
           goal_states.add(@board.current_state_string)
+          print "\nGOAL #{goal_states.size} FOUND (#{@board.current_state_string}) @ step #{state_steps} in #{Time.new - initial_time} seconds\n"
 
           # Exit loop if the once flag was toggled
           if $opts[:once]
@@ -107,8 +109,8 @@ class NQueenSolver
         @frontier = @backtrack.pop
       end
 
-      # If frontier is empty then no more states to explore
-      if @frontier == nil
+      # If frontier and backtrack are empty then no more states to explore
+      if @frontier == nil && @backtrack.size == 0
         print "\nDONE (Found #{goal_states.size} goal states in #{state_steps} steps and #{Time.new - initial_time} seconds)"
         break
       end

@@ -23,10 +23,8 @@ class SimpleChess < Chessboard
         bit_state.set(bit_counter)
         new_state = Bitset.from_s(@state.to_s)
 
-        # Add state only if valid
-        if is_valid_state(new_state)
-          possible_states << new_state
-        end
+        # Add state
+        possible_states << new_state
 
         bit_state.clear(bit_counter)
       end
