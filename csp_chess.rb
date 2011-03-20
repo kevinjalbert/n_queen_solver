@@ -2,8 +2,8 @@ require './chessboard'
 require 'set'
 
 class CSPChess < Chessboard 
-  def initialize(size)
-    super(size)
+  def initialize(size, random, verbose)
+    super(size, random, verbose)
   end
 
   def get_possible_states
@@ -32,6 +32,10 @@ class CSPChess < Chessboard
       end
       bit_counter += 1
     }
+
+    if @random
+      possible_states.sort_by! { rand }
+    end
 
     return possible_states
   end

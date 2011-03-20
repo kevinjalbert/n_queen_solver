@@ -4,10 +4,12 @@ require 'algorithms'
 
 class Chessboard
 
-  def initialize(size)
+  def initialize(size, random, verbose)
     @size = size
     @state = Bitset.new(size * size)
     @backtrack_states = Containers::Stack.new
+    @random = random
+    @verbose = verbose
   end
 
   def current_state_string
@@ -161,20 +163,26 @@ class Chessboard
   end
 
   def change_state(next_state)
-    # puts "  change state to " + next_state.to_s
     @state = next_state
+    if @verbose
+      puts "\n================================================================================\n\n"
+      puts "log: change state to " + current_state_string
+    end
   end
 
   def add_backtrack_state
-    # puts "  add backtrack state " + @state.to_s
+    if @verbose
+      puts "log: add backtrack state"
+    end
     state = Bitset.from_s(@state.to_s)
     @backtrack_states.push(state)
   end
 
   def backtrack
-    # puts "  backtrack from " + @state.to_s
     @state = @backtrack_states.pop
-    # puts "  to " + @state.to_s
+    if @verbose
+      puts "log: backtrack to last valid state"
+    end
   end
 
   def get_possible_states

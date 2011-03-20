@@ -2,8 +2,8 @@ require './chessboard'
 require 'set'
 
 class OrderedSimpleChess < Chessboard 
-  def initialize(size)
-    super(size)
+  def initialize(size, random, verbose)
+    super(size, random, verbose)
   end
 
   def get_possible_states
@@ -29,6 +29,10 @@ class OrderedSimpleChess < Chessboard
         bit_state.clear((@size * row_number) + cell)
       end
     }
+
+    if @random
+      possible_states.sort_by! { rand }
+    end
 
     return possible_states
   end

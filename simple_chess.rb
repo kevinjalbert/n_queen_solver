@@ -2,8 +2,8 @@ require './chessboard'
 require 'set'
 
 class SimpleChess < Chessboard 
-  def initialize(size)
-    super(size)
+  def initialize(size, random, verbose)
+    super(size, random, verbose)
   end
 
   def get_possible_states
@@ -30,6 +30,10 @@ class SimpleChess < Chessboard
       end
       bit_counter += 1
     }
+
+    if @random
+      possible_states.sort_by! { rand }
+    end
 
     return possible_states
   end

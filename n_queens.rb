@@ -7,7 +7,7 @@ require 'algorithms'
 
 # Handle user input with trollop gem
 $opts = Trollop::options do
-  version "n_queen_solver 0.2 (c) 2011 Kevin Jalbert"
+  version "n_queen_solver 0.3 (c) 2011 Kevin Jalbert"
   banner <<-EOS
   An n-queen solver that allows for some flexibility in the approaches for solving.
 
@@ -23,6 +23,8 @@ $opts = Trollop::options do
   opt :ordered, "Use an ordered search algorithm", :default => false
   opt :queens, "Number of queens", :default => 4
   opt :once, "Only find the fist goal state", :default => false
+  opt :random, "Randomizes the frontier to allow paths to be explore out of sequence", :default => false
+  opt :verbose, "Diplays additional information on the progress of the program", :default => false
 end
 Trollop::die :queens, "must be a positive number greater then 0" if $opts[:queens] < 1
 
@@ -38,15 +40,15 @@ class NQueenSolver
     @board = nil
     if $opts[:csp]
       if $opts[:ordered]
-        @board = OrderedCSPChess.new($opts[:queens])
+        @board = OrderedCSPChess.new($opts[:queens], $opts[:random], $opts[:verbose])
       else
-        @board = CSPChess.new($opts[:queens])
+        @board = CSPChess.new($opts[:queens], $opts[:random], $opts[:verbose])
       end
     else
       if $opts[:ordered]
-        @board = OrderedSimpleChess.new($opts[:queens])
+        @board = OrderedSimpleChess.new($opts[:queens], $opts[:random], $opts[:verbose])
       else
-        @board = SimpleChess.new($opts[:queens])
+        @board = SimpleChess.new($opts[:queens], $opts[:random], $opts[:verbose])
       end
     end
 
@@ -84,7 +86,7 @@ class NQueenSolver
       if @board.all_valid && @board.queens_size == $opts[:queens]
         if !goal_states.include?(@board.current_state_string)
           goal_states.add(@board.current_state_string)
-          print "\nGOAL #{goal_states.size} FOUND (#{@board.current_state_string}) @ step #{state_steps} in #{Time.new - initial_time} seconds\n"
+          print "\nGOAL #{goal_states.size} FOUND (#{@board.current_state_string}) @ step #{state_steps} in #{Time.new - initial_time} seconds\n\n"
 
           # Exit loop if the once flag was toggled
           if $opts[:once]

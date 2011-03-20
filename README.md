@@ -1,12 +1,14 @@
 #Information
 This program will solve the *N-Queen Problem*.
+
 More details about the program are found in the wiki.
 
 #Pre-Requirements
 This program takes advantage of the following [Ruby](http://www.ruby-lang.org,"Ruby") gems:
- * [Trollop](http://trollop.rubyforge.org/,"Trollop") 
- * [Algorithms](http://rubyforge.org/projects/algorithms/,"Algorithms")
- * [Bitset](https://github.com/tyler/bitset,"Bitset")
+
+* [Trollop](http://trollop.rubyforge.org/,"Trollop")
+* [Algorithms](http://rubyforge.org/projects/algorithms/,"Algorithms")
+* [Bitset](https://github.com/tyler/bitset,"Bitset")
 
 #Execution
 1. Download the source code and place it into a directory of choice.
