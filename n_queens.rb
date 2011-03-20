@@ -7,7 +7,7 @@ require 'algorithms'
 
 # Handle user input with trollop gem
 $opts = Trollop::options do
-  version "n_queen_solver 0.1 (c) 2011 Kevin Jalbert"
+  version "n_queen_solver 0.2 (c) 2011 Kevin Jalbert"
   banner <<-EOS
   An n-queen solver that allows for some flexibility in the approaches for solving.
 
