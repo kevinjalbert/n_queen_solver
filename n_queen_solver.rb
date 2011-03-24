@@ -13,7 +13,7 @@ $opts = Trollop::options do
 
   GitHub: <https://github.com/kevinjalbert/n_queen_solver>
 
-  Usage:  n_queens [options]
+  Usage:  n_queen_solver [options]
 
   where [options] are:
   EOS
