@@ -55,13 +55,11 @@ class NQueenSolver
   end
 
   def create_frontier
-    # Create frontier (stack/queue using algorithms gem)
-    @frontier = nil
+    # Create frontier and backtrack (backtrack is a stack or queue)
+    @frontier = Array.new
     if $opts[:dfs]
-      @frontier = Containers::Stack.new
       @backtrack = Containers::Stack.new
     else
-      @frontier = Containers::Queue.new
       @backtrack = Containers::Queue.new
     end
   end
@@ -117,21 +115,13 @@ class NQueenSolver
 
       # Change state to the next state
       @board.change_state(@frontier.pop)
-
-      # Keep track of the states of the board that are valid (all queens in play)
-      if @board.queens_size == $opts[:queens]
-        state_steps += 1
-      end
+      state_steps += 1
 
       # Add the current frontier to the backtrack
       @backtrack.push(@frontier)
 
       # Get new frontier from current state
-      if $opts[:dfs]
-        @frontier = Containers::Stack.new
-      else
-        @frontier = Containers::Queue.new
-      end
+      @frontier = Array.new
       @board.get_possible_states.map { |state|
         @frontier.push(state)
       }
