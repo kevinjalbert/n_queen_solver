@@ -100,12 +100,7 @@ class NQueenSolver
       end
 
       # While in an empty state, keep backtracking till a valid state
-      while true
-        # Frontier has states, or does not have anything left anymore
-        if @frontier == nil || @frontier.size != 0
-          break
-        end
-
+      while !(@frontier == nil || @frontier.size != 0) #true
         # Backtrack to last state
         @board.backtrack
         @frontier = @backtrack.pop
@@ -122,7 +117,11 @@ class NQueenSolver
 
       # Change state to the next state
       @board.change_state(@frontier.pop)
-      state_steps += 1
+
+      # Keep track of the states of the board that are valid (all queens in play)
+      if @board.queens_size == $opts[:queens]
+        state_steps += 1
+      end
 
       # Add the current frontier to the backtrack
       @backtrack.push(@frontier)
