@@ -1,10 +1,14 @@
 #Information
 
 *Author*:    Kevin Jalbert  (blitzbolt@gmail.com)
+
 *Copyright*: Copyright (c) 2011 Kevin Jalbert
+
 *License*:   MIT License
 
 The program solves the N-Queen problem while allowing the user to specify various parameters for what algorithmic approach to use. More details about the program are found in the [Wiki](https://github.com/kevinjalbert/n_queen_solver/wiki "Wiki").
+
+[YARD](http://yardoc.org/ "YARD") documentation can be generated using the following command from the root directory ```yardoc```
 
 #Pre-Requirements
 This program takes advantage of the following [Ruby](http://www.ruby-lang.org "Ruby") gems:
