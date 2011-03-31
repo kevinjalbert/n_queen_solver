@@ -1,4 +1,4 @@
-require './chessboard'
+require 'chessboards/chessboard'
 require 'set'
 
 # This class inherits from the {Chessboard} class that implements a simple

@@ -1,7 +1,10 @@
-require './simple_chess'
-require './csp_chess'
-require './ordered_csp_chess'
-require './ordered_simple_chess'
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
+
+require 'chessboards/simple_chess'
+require 'chessboards/csp_chess'
+require 'chessboards/ordered_csp_chess'
+require 'chessboards/ordered_simple_chess'
 require 'trollop'
 require 'algorithms'
 

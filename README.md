@@ -10,6 +10,8 @@ The program solves the N-Queen problem while allowing the user to specify variou
 
 [YARD](http://yardoc.org/ "YARD") documentation can be generated using the following command from the root directory ```yardoc```
 
+It is also possible to use the Rakefile to generate the documentation, install the required gems and execute the program. Use the following command, ```rake``` to see the options.
+
 #Pre-Requirements
 This program takes advantage of the following [Ruby](http://www.ruby-lang.org "Ruby") gems:
 
