@@ -147,11 +147,8 @@ class Chessboard
   #
   # @return [Boolean] true if the chessboard is in a valid state
   def all_valid
-    # Check the vertical and horizontal
+    # Check the vertical
     @size.times { |i|
-      if !valid_row(i)
-        return false
-      end
       if !valid_column(i)
         return false
       end
@@ -173,11 +170,18 @@ class Chessboard
       end
     }
 
+    # Check the horizontal
+    @size.times { |i|
+      if !valid_row(i)
+        return false
+      end
+    }
+
     return true
   end
 
   # Checks if the given state would be valid on the chessboard
-  # 
+  #
   # @note The chessboard will temporarily change to the given state to be
   #   validated, which then it is reverted back.
   # @param [Bitset] state the state that will be checked if it is valid
