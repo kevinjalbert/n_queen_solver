@@ -1,3 +1,7 @@
+N-Queen Solver
+=====
+[![Gitter Chat](http://img.shields.io/chat/gitter.png?color=brightgreen)](https://gitter.im/kevinjalbert/n_queen_solver)
+
 #Information
 
 *Author*:    Kevin Jalbert  (blitzbolt@gmail.com)
@@ -27,7 +31,3 @@ This program takes advantage of the following [Ruby](http://www.ruby-lang.org "R
 To see a list of the options run the following command ```ruby n_queen_solver.rb -h```
 
 All the options are detailed in the [Options](https://github.com/kevinjalbert/n_queen_solver/wiki/Options "Options") page.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kevinjalbert/n_queen_solver/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
